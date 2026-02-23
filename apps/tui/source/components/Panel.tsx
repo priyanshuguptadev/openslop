@@ -4,9 +4,9 @@ import {colors} from '../theme/colors.js';
 import StatusRow from './StatusRow.js';
 
 const REQUIRED = [
-	{key: 'LLM_BASE_URL', label: 'Base URL'},
-	{key: 'LLM_API_KEY', label: 'API Key'},
-	{key: 'LLM_MODEL', label: 'Model'},
+	{key: 'baseUrl', label: 'Base URL'},
+	{key: 'apiKey', label: 'API Key'},
+	{key: 'model', label: 'Model'},
 ];
 
 export default function Panel({missing}: {missing: string[]}) {

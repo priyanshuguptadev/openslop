@@ -15,10 +15,12 @@
 	"files": ["dist"],
 	"dependencies": {
 		"@repo/agent": "workspace:*",
+		"@repo/config": "workspace:*",
 		"@repo/typescript-config": "workspace:*",
 		"boxen": "^8.0.1",
 		"figlet": "^1.10.0",
 		"ink": "^4.1.0",
+		"ink-text-input": "^6.0.0",
 		"marked": "^17.0.3",
 		"marked-terminal": "^7.3.0",
 		"meow": "^11.0.0",

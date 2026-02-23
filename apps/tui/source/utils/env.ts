@@ -1,14 +1,14 @@
+import {loadConfig} from '@repo/config';
+
 export function validateEnv(required: string[]) {
 	const missing: string[] = [];
-
+	const config = loadConfig();
+	const confKeys = Object.keys(config);
 	for (const key of required) {
-		if (!process.env[key]) {
-			missing.push(key);
-		}
+		if (!confKeys.includes(key)) missing.push(key);
 	}
-
 	return {
-		valid: missing.length === 0,
+		valid: confKeys.length === 3,
 		missing,
 	};
 }
