@@ -36,19 +36,30 @@ export default function ChatScreen({
 		}
 	});
 	async function handleSubmit() {
-		if (!input.trim()) return;
+		try {
+			if (!input.trim()) return;
 
-		const userMessage = input;
+			const userMessage = input;
 
-		setMessages(prev => [...prev, {role: 'user', content: userMessage}]);
+			setMessages(prev => [...prev, {role: 'user', content: userMessage}]);
 
-		setInput('');
-		setLoading(true);
-		const response = await agent.send(userMessage);
+			setInput('');
+			setLoading(true);
+			const response = await agent.send(userMessage);
 
-		setMessages(prev => [...prev, {role: 'assistant', content: response}]);
+			setMessages(prev => [...prev, {role: 'assistant', content: response}]);
 
-		setLoading(false);
+			setLoading(false);
+		} catch (error: any) {
+			setMessages(prev => [
+				...prev,
+				{
+					role: 'assistant',
+					content: 'Something went wrong',
+				},
+			]);
+			setLoading(false);
+		}
 	}
 
 	return (
