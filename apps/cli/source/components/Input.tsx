@@ -31,7 +31,7 @@ export default function InputBox({
 
 	return (
 		<Box flexDirection="column" marginTop={2}>
-			<Text color={borderColor}>╭{'─'.repeat(containerWidth - 2)}╮</Text>
+			<Text color={borderColor}>╭{'─'.repeat(containerWidth - 3)}╮</Text>
 			<Text>
 				<Text color={borderColor}>│</Text>
 				<Text color={focused ? colors.accent : colors.border}> </Text>
@@ -40,7 +40,7 @@ export default function InputBox({
 
 				<Text color={borderColor}> │</Text>
 			</Text>
-			<Text color={borderColor}>╰{'─'.repeat(containerWidth - 2)}╯</Text>
+			<Text color={borderColor}>╰{'─'.repeat(containerWidth - 3)}╯</Text>
 
 			<Box marginTop={1}>
 				<Text color={colors.muted}>Press Enter to send · Ctrl+C to exit</Text>
