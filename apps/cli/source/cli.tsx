@@ -3,10 +3,9 @@ import React from 'react';
 import {render} from 'ink';
 import App from './app.js';
 import {SetupScreen} from './screens/SetupScreen.js';
+import {configExists} from '@repo/config';
 
-const command = process.argv[2];
-
-if (command === 'setup') {
+if (!configExists()) {
 	render(<SetupScreen />);
 } else {
 	render(<App />);

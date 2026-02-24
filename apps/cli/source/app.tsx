@@ -4,11 +4,11 @@ import ChatScreen from './screens/ChatScreen.js';
 import {validateEnv} from './utils/env.js';
 import {createAgent} from '@repo/agent';
 import {loadConfig} from '@repo/config';
-const {baseUrl, apiKey, model} = loadConfig();
 
 export default function App() {
+	const {baseUrl, apiKey, model} = loadConfig();
 	const {valid, missing} = validateEnv(['apiKey', 'model', 'baseUrl']);
-	if (!valid || !model || !apiKey) {
+	if (!valid || !model || !apiKey || !baseUrl) {
 		return <WelcomeScreen missing={missing} />;
 	}
 	const agent = createAgent({

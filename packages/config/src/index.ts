@@ -3,9 +3,9 @@ import os from "os";
 import path from "path";
 
 export interface OpenSlopConfig {
-  baseUrl: string;
-  apiKey: string;
-  model: string;
+  baseUrl: string | null;
+  apiKey: string | null;
+  model: string | null;
 }
 
 const CONFIG_DIR = path.join(os.homedir(), ".openslop");
@@ -21,7 +21,7 @@ export function configExists(): boolean {
 
 export function loadConfig(): OpenSlopConfig {
   if (!configExists()) {
-    throw new Error("Config not found. Run `openslop setup` first.");
+    return { apiKey: null, baseUrl: null, model: null };
   }
 
   const raw = fs.readFileSync(CONFIG_PATH, "utf-8");

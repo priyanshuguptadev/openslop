@@ -2,19 +2,14 @@ import React, {useState} from 'react';
 import {Box, Text, useApp, useInput} from 'ink';
 import TextInput from 'ink-text-input';
 import {saveConfig} from '@repo/config';
+import Header from '../components/Header.js';
+import {validateEnv} from '../utils/env.js';
+import {colors} from '../theme/colors.js';
 
 type Step = 'baseUrl' | 'apiKey' | 'model' | 'confirm' | 'done';
 
-const theme = {
-	title: '#e5e7eb',
-	accent: '#22d3ee',
-	muted: '#94a3b8',
-	error: '#f87171',
-	success: '#22c55e',
-	border: '#334155',
-};
-
 export const SetupScreen = () => {
+	const {missing} = validateEnv(['baseUrl', 'apiKey', 'model']);
 	const {exit} = useApp();
 
 	const [step, setStep] = useState<Step>('baseUrl');
@@ -58,7 +53,7 @@ export const SetupScreen = () => {
 		setError(null);
 
 		try {
-			await saveConfig({
+			saveConfig({
 				apiKey,
 				model,
 				baseUrl,
@@ -74,7 +69,7 @@ export const SetupScreen = () => {
 	};
 
 	const Progress = () => (
-		<Text color={theme.muted}>
+		<Text color={colors.muted}>
 			Step {['baseUrl', 'apiKey', 'model', 'confirm'].indexOf(step) + 1}/4
 		</Text>
 	);
@@ -82,7 +77,7 @@ export const SetupScreen = () => {
 	if (step === 'done') {
 		return (
 			<Box flexDirection="column">
-				<Text color={theme.success} bold>
+				<Text color={colors.success} bold>
 					Configuration saved successfully.
 				</Text>
 			</Box>
@@ -91,9 +86,7 @@ export const SetupScreen = () => {
 
 	return (
 		<Box flexDirection="column">
-			<Text color={theme.title} bold>
-				OpenSlop Setup
-			</Text>
+			<Header missing={missing} />
 
 			<Box marginTop={1}>
 				<Progress />
@@ -102,8 +95,8 @@ export const SetupScreen = () => {
 			<Box marginTop={2} flexDirection="column">
 				{step === 'baseUrl' && (
 					<>
-						<Text color={theme.accent}>Enter Base URL</Text>
-						<Text color={theme.muted}>Example: https://api.openai.com/v1</Text>
+						<Text color={colors.accent}>Enter Base URL</Text>
+						<Text color={colors.muted}>Example: https://api.openai.com/v1</Text>
 						<Box marginTop={1}>
 							<TextInput
 								value={baseUrl}
@@ -116,7 +109,7 @@ export const SetupScreen = () => {
 
 				{step === 'apiKey' && (
 					<>
-						<Text color={theme.accent}>Enter API Key</Text>
+						<Text color={colors.accent}>Enter API Key</Text>
 						<Box marginTop={1}>
 							<TextInput
 								value={apiKey}
@@ -130,8 +123,8 @@ export const SetupScreen = () => {
 
 				{step === 'model' && (
 					<>
-						<Text color={theme.accent}>Enter Model Name</Text>
-						<Text color={theme.muted}>Example: gpt-4o-mini</Text>
+						<Text color={colors.accent}>Enter Model Name</Text>
+						<Text color={colors.muted}>Example: gpt-4o-mini</Text>
 						<Box marginTop={1}>
 							<TextInput value={model} onChange={setModel} onSubmit={next} />
 						</Box>
@@ -140,7 +133,7 @@ export const SetupScreen = () => {
 
 				{step === 'confirm' && (
 					<>
-						<Text color={theme.accent}>Review Configuration</Text>
+						<Text color={colors.accent}>Review Configuration</Text>
 
 						<Box marginTop={1} flexDirection="column">
 							<Text>Base URL: {baseUrl}</Text>
@@ -149,7 +142,7 @@ export const SetupScreen = () => {
 						</Box>
 
 						<Box marginTop={1}>
-							<Text color={theme.muted}>Press Enter to confirm.</Text>
+							<Text color={colors.muted}>Press Enter to confirm.</Text>
 						</Box>
 					</>
 				)}
@@ -157,12 +150,12 @@ export const SetupScreen = () => {
 
 			{error && (
 				<Box marginTop={1}>
-					<Text color={theme.error}>{error}</Text>
+					<Text color={colors.error}>{error}</Text>
 				</Box>
 			)}
 
 			<Box marginTop={2}>
-				<Text color={theme.muted}>Press Esc to cancel</Text>
+				<Text color={colors.muted}>Press Esc to cancel</Text>
 			</Box>
 		</Box>
 	);
