@@ -5,7 +5,7 @@ import InputBox from '../components/Input.js';
 import WelcomeScreen from './WelcomeScreen.js';
 import {Message} from '../types/message.js';
 import Messages from '../components/Messages.js';
-import Working from '../components/Working.js';
+import Spinner from 'ink-spinner';
 
 export default function ChatScreen({
 	missing,
@@ -56,7 +56,7 @@ export default function ChatScreen({
 			<WelcomeScreen missing={missing} />
 			<Messages messages={messages} />
 
-			{loading && <Working />}
+			{loading && <Spinner type="aesthetic" />}
 
 			<Box marginTop={1}>
 				<InputBox value={input} placeholder="what next..." />
