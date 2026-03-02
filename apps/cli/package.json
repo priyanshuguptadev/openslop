@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"build": "tsup",
-		"dev": "tsc --watch",
+		"dev": "bun source/cli.tsx",
 		"test": "prettier --check . && xo && ava"
 	},
 	"files": ["dist"],
