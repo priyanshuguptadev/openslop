@@ -5,24 +5,48 @@ import path from "path";
 export class WriteFileTool implements Tool {
   name = "write_file";
   description = "Create and write into file";
+
   schema = {
     type: "object",
     properties: {
       file_path: {
         type: "string",
-        description: "Absolute or relative path to file",
+        description: "Path relative to project root",
       },
       content: {
         type: "string",
         description: "Content to write into the file",
       },
-      required: ["file_path", "content"],
+      overwrite: {
+        type: "boolean",
+        description: "Allow overwriting existing file",
+        default: false,
+      },
     },
+    required: ["file_path", "content"],
   };
+
   async execute(input: any): Promise<string> {
-    const file_path = path.resolve(process.cwd(), input.file_path);
-    const content = input.content;
-    await fs.writeFile(file_path, content, "utf-8");
-    return "File is written successfully";
+    const root = process.cwd();
+    const resolvedPath = path.resolve(root, input.file_path);
+
+    if (!resolvedPath.startsWith(root + path.sep)) {
+      throw new Error("Path escapes project root");
+    }
+
+    const stat = await fs.stat(resolvedPath).catch(() => null);
+    if (stat?.isDirectory()) {
+      throw new Error("Cannot overwrite a directory with a file");
+    }
+
+    const dir = path.dirname(resolvedPath);
+    await fs.mkdir(dir, { recursive: true });
+
+    await fs.writeFile(resolvedPath, input.content, {
+      encoding: "utf-8",
+      flag: input.overwrite ? "w" : "wx",
+    });
+
+    return `File written: ${path.relative(root, resolvedPath)}`;
   }
 }

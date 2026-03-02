@@ -22,27 +22,33 @@ export class Agent {
     return this.loop();
   }
   private async loop(): Promise<string> {
-    while (true) {
-      const response = await this.llm.complete(this.memory.all());
-      if (!response) throw new Error("Response not generated");
-      if (response.tool_calls && response.tool_calls.length) {
-        const call = response.tool_calls[0];
-        if (call && call.type == "function") {
-          const name = call.function.name;
-          const tool = this.tools.get(name);
-          const content = await tool!.execute(
-            JSON.parse(call.function.arguments),
-          );
-          this.memory.add({
-            role: "tool",
-            tool_call_id: call.id,
-            content: content,
-          });
-          continue;
+    try {
+      while (true) {
+        const response = await this.llm.complete(this.memory.all());
+        if (!response) throw new Error("Response not generated");
+        this.memory.add(response);
+        if (response.tool_calls && response.tool_calls.length) {
+          const call = response.tool_calls[0];
+          if (call && call.type == "function") {
+            const name = call.function.name;
+            const tool = this.tools.get(name);
+            const content = await tool!.execute(
+              JSON.parse(call.function.arguments),
+            );
+            this.memory.add({
+              role: "tool",
+              tool_call_id: call.id,
+              content: content,
+            });
+            continue;
+          }
         }
+        this.memory.add(response);
+        return response.content!;
       }
-      this.memory.add(response);
-      return response.content!;
+    } catch (error) {
+      console.error(error);
+      throw error;
     }
   }
 }
