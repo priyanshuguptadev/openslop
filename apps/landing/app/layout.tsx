@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif } from "next/font/google";
+import { Inter, Instrument_Serif, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const spaceMono = Space_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: "400",
 });
 
 const instrument = Instrument_Serif({
@@ -25,7 +25,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${instrument.variable} font-sans antialiased`}>{children}</body>
+      <body
+        className={`${spaceMono.className} ${instrument.variable} font-sans antialiased`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

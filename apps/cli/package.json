@@ -15,7 +15,9 @@
 		"dev": "bun source/cli.tsx",
 		"test": "prettier --check . && xo && ava"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"dependencies": {
 		"boxen": "^8.0.1",
 		"figlet": "^1.10.0",
@@ -28,9 +30,6 @@
 		"react": "19.2.4"
 	},
 	"devDependencies": {
-		"@repo/agent": "workspace:*",
-		"@repo/config": "workspace:*",
-		"@repo/typescript-config": "workspace:*",
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"@types/marked": "^6.0.0",
 		"@types/marked-terminal": "^6.1.1",
@@ -53,7 +52,9 @@
 			"ts": "module",
 			"tsx": "module"
 		},
-		"nodeArguments": ["--loader=ts-node/esm"]
+		"nodeArguments": [
+			"--loader=ts-node/esm"
+		]
 	},
 	"xo": {
 		"extends": "xo-react",
