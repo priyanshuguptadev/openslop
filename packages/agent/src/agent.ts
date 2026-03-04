@@ -32,9 +32,22 @@ export class Agent {
           if (call && call.type == "function") {
             const name = call.function.name;
             const tool = this.tools.get(name);
-            const content = await tool!.execute(
-              JSON.parse(call.function.arguments),
-            );
+            let content = "";
+            if (!tool) {
+              content = `Error: Tool ${name} does not exits. Please check available tools.`;
+            } else {
+              try {
+                let args;
+                try {
+                  args = JSON.parse(call.function.arguments);
+                } catch (parseError) {
+                  throw new Error(`Invalid JSON args`);
+                }
+                content = await tool.execute(args);
+              } catch (error: any) {
+                content = `Error: ${error.message || String(error)}`;
+              }
+            }
             this.memory.add({
               role: "tool",
               tool_call_id: call.id,
@@ -44,10 +57,10 @@ export class Agent {
           }
         }
         this.memory.add(response);
-        return response.content!;
+        return response.content || "";
       }
     } catch (error) {
-      console.error(error);
+      console.error("Critical Agent Error", error);
       throw error;
     }
   }

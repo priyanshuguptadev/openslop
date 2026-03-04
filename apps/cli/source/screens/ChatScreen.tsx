@@ -55,7 +55,9 @@ export default function ChatScreen({
 				...prev,
 				{
 					role: 'assistant',
-					content: 'Something went wrong',
+					content: `**Error**: ${
+						error.message || 'An unexpected error occurred.'
+					}`,
 				},
 			]);
 			setLoading(false);
