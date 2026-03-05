@@ -1,16 +1,16 @@
 # Configuration
 
-OpenSlop can be customized easily through the `.openslop/config.json` file.
+The `.openslop/config.json` file is the base of OpenSlop. It stores [baseUrl](/glossary#base-url), [apiKey](/glossary#api-key) and [model name](/glossary#model-name) for the agent.
 
 ## Basic Options
 
-Here are some of the basic configuration options you can provide:
+Below is the schema of the config file. You can find it in your user folder under .openslop
 
 ```json
 {
-  baseUrl: "provider-base-url",
-  apiKey: "your-api-key",
-  model: "llm-model-name"
+  baseUrl: "string",
+  apiKey: "string",
+  model: "string"
 }
 ```
 

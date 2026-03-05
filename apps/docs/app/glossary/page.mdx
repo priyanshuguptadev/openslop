@@ -1,0 +1,31 @@
+# Glossary
+
+This glossary defines common terms used across the OpenSlop documentation and configuration. 
+
+## Base URL (OpenAI compatible)
+
+The **Base URL** (`baseUrl`) is the root web address where your target AI service (like an LLM provider or an agent platform) is hosted. For standard OpenAI or Ollama endpoints, this tells OpenSlop where to send API requests.
+
+
+**Major providers like Claude, Gemini, and OpenRouter offer OpenAI-compatible base URLs**
+
+### OpenRouter
+`https://openrouter.ai/api/v1` 
+
+### Gemini (Google)
+`https://generativelanguage.googleapis.com/v1beta/openai/` 
+
+### Claude (Anthropic)
+`https://api.anthropic.com/v1` 
+
+## API Key
+
+The **API Key** (`apiKey`) is a secure credential used to authenticate your requests with a remote service or AI API. You must provide a valid API key to connect OpenSlop securely to paid or external services. 
+
+Example: `sk-XXXXXXXXXXXXXXXXXXXXXXXX`
+
+## Model Name
+
+The **Model Name** (`model` or `model name`) specifies which AI model to invoke when a request is sent. Some providers offer multiple model variants (e.g., small, large, chat-optimized), and the model name ensures OpenSlop uses the exact one you want.
+
+Example: `gpt-4o`, `llama3.2`

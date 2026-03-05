@@ -8,6 +8,8 @@ export const metadata = {
   description: "OpenSlop Documentation",
 };
 
+
+
 const banner = <Banner storageKey="some-key">OpenSlop 1.0 is released 🎉</Banner>;
 const navbar = (
   <Navbar

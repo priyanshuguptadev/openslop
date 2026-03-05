@@ -1,5 +1,6 @@
 export default {
     index: "Introduction",
     "get-started": "Get Started",
-    config: "Config"
+    config: "Config",
+    glossary: "Glossary"
 }
