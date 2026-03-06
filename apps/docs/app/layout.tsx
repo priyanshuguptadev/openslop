@@ -2,7 +2,6 @@ import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Banner, Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import Image from "next/image";
-import Link from "next/link";
 import "nextra-theme-docs/style.css";
 
 export const metadata = {
@@ -16,22 +15,18 @@ const banner = (
 const navbar = (
   <Navbar
     logo={
-      <div className="flex items-center">
-        <Link
-          href="/"
-          className="flex items-center hover:opacity-90 transition-opacity"
-        >
-          <Image
-            src="/logo.png"
-            alt="openslop logo"
-            width={160}
-            height={40}
-            className="h-8 w-auto object-contain mix-blend-multiply"
-            priority
-          />
-        </Link>
+      <div className="flex items-center hover:opacity-90 transition-opacity">
+        <Image
+          src="/logo.png"
+          alt="openslop logo"
+          width={160}
+          height={40}
+          className="h-8 w-auto object-contain mix-blend-multiply"
+          priority
+        />
       </div>
     }
+    logoLink="/"
   />
 );
 const footer = <Footer>MIT {new Date().getFullYear()} © OpenSlop.</Footer>;
@@ -60,7 +55,7 @@ export default async function RootLayout({
           pageMap={await getPageMap()}
           docsRepositoryBase="https://github.com/priyanshuguptadev/openslop/tree/main/apps/docs"
           footer={footer}
-          // ... Your additional layout options
+        // ... Your additional layout options
         >
           {children}
         </Layout>
