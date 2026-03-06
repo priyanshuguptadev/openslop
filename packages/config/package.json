@@ -11,6 +11,9 @@
       "types": "./dist/index.d.ts"
     }
   },
+  "scripts": {
+    "build": "bunx tsc -b"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@repo/typescript-config": "workspace:*"

@@ -1,6 +1,10 @@
 {
   "name": "openslop",
   "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev"
+  },
   "devDependencies": {
     "turbo": "^2.8.10",
     "typescript": "5.9.2"

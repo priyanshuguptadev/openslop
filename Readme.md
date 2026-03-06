@@ -43,9 +43,7 @@ Welcome to **Openslop** – a modern TypeScript monorepo powered by **Turbo** an
 
 3. **Run an example app**
 
-   ```bash
-   # CLI example
-   bun run start:cli   # defined in apps/cli/package.json
+   ```bash # defined in apps/cli/package.json
 
    # Next.js landing page
    cd apps/landing
