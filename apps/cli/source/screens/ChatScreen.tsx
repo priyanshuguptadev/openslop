@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
-import {Box, useInput} from 'ink';
+import React, { useState } from 'react';
+import { Box, Text, useInput } from 'ink';
 
 import InputBox from '../components/Input.js';
-import WelcomeScreen from './WelcomeScreen.js';
-import {Message} from '../types/message.js';
+import Header from '../components/Header.js';
+import { Message } from '../types/message.js';
 import Messages from '../components/Messages.js';
 import Spinner from 'ink-spinner';
+import { colors } from '../theme/colors.js';
 
 export default function ChatScreen({
 	missing,
@@ -41,13 +42,13 @@ export default function ChatScreen({
 
 			const userMessage = input;
 
-			setMessages(prev => [...prev, {role: 'user', content: userMessage}]);
+			setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
 
 			setInput('');
 			setLoading(true);
 			const response = await agent.send(userMessage);
 
-			setMessages(prev => [...prev, {role: 'assistant', content: response}]);
+			setMessages(prev => [...prev, { role: 'assistant', content: response }]);
 
 			setLoading(false);
 		} catch (error: any) {
@@ -55,9 +56,8 @@ export default function ChatScreen({
 				...prev,
 				{
 					role: 'assistant',
-					content: `**Error**: ${
-						error.message || 'An unexpected error occurred.'
-					}`,
+					content: `**Error**: ${error.message || 'An unexpected error occurred.'
+						}`,
 				},
 			]);
 			setLoading(false);
@@ -65,14 +65,20 @@ export default function ChatScreen({
 	}
 
 	return (
-		<Box flexDirection="column" alignItems="center">
-			<WelcomeScreen missing={missing} />
+		<Box flexDirection="column" alignItems="flex-start">
+			<Header missing={missing} />
 			<Messages messages={messages} />
 
-			{loading && <Spinner type="aesthetic" />}
+			{loading && (
+				<Box flexDirection="row" gap={1} marginTop={1}>
+					<Text color={colors.accent}>
+						<Spinner type="dots" />
+					</Text>
+				</Box>
+			)}
 
 			<Box marginTop={1}>
-				<InputBox value={input} placeholder="what next..." />
+				<InputBox value={input} placeholder="Ask anything..." />
 			</Box>
 		</Box>
 	);

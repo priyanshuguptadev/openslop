@@ -19,7 +19,6 @@
 		"dist"
 	],
 	"dependencies": {
-		"boxen": "^8.0.1",
 		"figlet": "^1.10.0",
 		"ink": "6.8.0",
 		"ink-spinner": "^5.0.0",
