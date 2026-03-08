@@ -1,10 +1,10 @@
 export const colors = {
-	background: '#0f172a',
-	primary: '#f5f5f5',
-	accent: '#f5f5f5',
-	text: '#f5f5f5',
-	muted: '#94a3b8',
-	border: '#334155',
-	error: '#f87171',
-	success: '#22c55e',
+	background: '#000000',
+	primary: '#ffffff',
+	accent: '#d4d4d4',
+	text: '#e5e5e5',
+	muted: '#737373',
+	border: '#262626',
+	error: '#ffffff',
+	success: '#ffffff',
 };
