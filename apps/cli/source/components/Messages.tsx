@@ -15,11 +15,9 @@ export default function Messages({ messages }: { messages: Message[] }) {
 				<Box key={i} flexDirection="column" marginBottom={1}>
 					{m.role === 'user' ? (
 						<Text>
-							<Text color={colors.accent} bold>
-								You:
+							<Text backgroundColor={colors.border} color={colors.primary} bold>
+								{` You: ${m.content} `}
 							</Text>
-							<Text> </Text>
-							<Text color={colors.text}>{m.content}</Text>
 						</Text>
 					) : (
 						<Text>
