@@ -1,18 +1,18 @@
-import React, {useState} from 'react';
-import {Box, Text, useApp, useInput} from 'ink';
+import React, { useState, useEffect } from 'react';
+import { Box, Text, useApp, useInput } from 'ink';
 import TextInput from 'ink-text-input';
-import {saveConfig} from '@repo/config';
+import { saveConfig, configExists } from '@repo/config';
 import Header from '../components/Header.js';
-import {validateEnv} from '../utils/env.js';
-import {colors} from '../theme/colors.js';
+import { validateEnv } from '../utils/env.js';
+import { colors } from '../theme/colors.js';
 
-type Step = 'baseUrl' | 'apiKey' | 'model' | 'confirm' | 'done';
+type Step = 'check_reset' | 'baseUrl' | 'apiKey' | 'model' | 'confirm' | 'done';
 
 export const SetupScreen = () => {
-	const {missing} = validateEnv(['baseUrl', 'apiKey', 'model']);
-	const {exit} = useApp();
+	const { missing } = validateEnv(['baseUrl', 'apiKey', 'model']);
+	const { exit } = useApp();
 
-	const [step, setStep] = useState<Step>('baseUrl');
+	const [step, setStep] = useState<Step>('check_reset');
 
 	const [baseUrl, setBaseUrl] = useState('');
 	const [apiKey, setApiKey] = useState('');
@@ -20,9 +20,23 @@ export const SetupScreen = () => {
 
 	const [error, setError] = useState<string | null>(null);
 
-	useInput((_, key) => {
+	useEffect(() => {
+		if (!configExists()) {
+			setStep('baseUrl');
+		}
+	}, []);
+
+	useInput((input, key) => {
 		if (key.escape) exit();
-		if (step === 'confirm' && key.return) handleSubmit();
+		if (step === 'check_reset') {
+			if (input.toLowerCase() === 'y') {
+				setStep('baseUrl');
+			} else if (input.toLowerCase() === 'n') {
+				exit();
+			}
+		} else if (step === 'confirm' && key.return) {
+			handleSubmit();
+		}
 	});
 
 	const next = () => {
@@ -88,11 +102,22 @@ export const SetupScreen = () => {
 		<Box flexDirection="column">
 			<Header missing={missing} />
 
-			<Box marginTop={1}>
-				<Progress />
-			</Box>
+			{step !== 'check_reset' && (
+				<Box marginTop={1}>
+					<Progress />
+				</Box>
+			)}
 
 			<Box marginTop={2} flexDirection="column">
+				{step === 'check_reset' && (
+					<>
+						<Text color={colors.accent}>Existing Configuration Found</Text>
+						<Box marginTop={1}>
+							<Text>Do you want to reset your configuration? (y/n)</Text>
+						</Box>
+					</>
+				)}
+
 				{step === 'baseUrl' && (
 					<>
 						<Text color={colors.accent}>Enter Base URL</Text>
