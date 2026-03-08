@@ -2,9 +2,9 @@
 
 This glossary defines common terms used across the OpenSlop documentation and configuration. 
 
-## Base URL (OpenAI compatible)
+## Base URL
 
-The **Base URL** (`baseUrl`) is the root web address where your target AI service (like an LLM provider or an agent platform) is hosted. For standard OpenAI or Ollama endpoints, this tells OpenSlop where to send API requests.
+The **Base URL** (`baseUrl`) is the root web address of your target AI service.
 
 
 **Major providers like Claude, Gemini, and OpenRouter offer OpenAI-compatible base URLs**
@@ -29,3 +29,8 @@ Example: `sk-XXXXXXXXXXXXXXXXXXXXXXXX`
 The **Model Name** (`model` or `model name`) specifies which AI model to invoke when a request is sent. Some providers offer multiple model variants (e.g., small, large, chat-optimized), and the model name ensures OpenSlop uses the exact one you want.
 
 Example: `gpt-4o`, `llama3.2`
+
+## OpenAI-compatible
+
+OpenAI-compatible means that a service provides an API that follows the same structure and conventions as OpenAI's API. This allows tools like OpenSlop to work with different AI providers without needing custom integrations for each one.
+

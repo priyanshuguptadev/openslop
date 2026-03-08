@@ -3,7 +3,7 @@ import { Terminal, KeyRound, Sparkles } from "lucide-react";
 const features = [
     {
         title: "Use any AI model",
-        description: "Plug in your favorite provider. If it works like OpenAI, it works here.",
+        description: "Plug in your favorite LLM provider. Just make sure it provides an OpenAI-compatible API endpoint.",
         icon: Sparkles,
         imageUrl: "/providers.png"
     },
@@ -15,7 +15,7 @@ const features = [
     },
     {
         title: "Lives in your terminal",
-        description: "It works right where your code is. No need to leave your editor to get answers.",
+        description: "It works right where your code is. No need to leave your editor to get work done .",
         icon: Terminal,
         imageUrl: "/terminal.png"
     },

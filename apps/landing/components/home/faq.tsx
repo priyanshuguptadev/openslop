@@ -11,7 +11,7 @@ const faqs = [
     },
     {
         question: "how do i get started",
-        answer: "Simply run `bun intall -g @openslop/openslop` in your terminal. Then run `openslop init` to configure your API keys.",
+        answer: "Simply run `npm install -g @openslop/openslop` in your terminal. Then run `openslop setup` to configure your API keys.",
     },
     {
         question: "can i run this on windows",
@@ -23,7 +23,7 @@ const faqs = [
     },
     {
         question: "can i run any model",
-        answer: "Yes, openslop supports any model that provides an OpenAI-compatible API endpoint.",
+        answer: "Yes, openslop supports any model from OpenAI compatible providers e.g. Openrouter, Groq, Google Gemini, etc.",
     },
     {
         question: "do i need to install an app",

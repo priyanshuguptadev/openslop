@@ -1,6 +1,6 @@
 # OpenSlop
 
-A powerful agentic coding assistant for your terminal.
+Coding agent in your terminal
 
 ## Installation
 
@@ -13,9 +13,11 @@ npm install -g @openslop/openslop
 ## Quick Start
 
 1. **Setup the agent**
+
    ```bash
-   openslop
+   openslop setup
    ```
+
    This command sets up a configuration file (`.openslop/config.json`) in the home directory. You can edit this file using setup command.
 
 2. **Run the agent**
@@ -30,23 +32,22 @@ The generated `.openslop/config.json` looks like this:
 
 ```json
 {
-  "baseUrl": "string",
-  "apiKey": "string",
-  "model": "string"
+	"apiKey": "string",
+	"baseUrl": "string",
+	"model": "string"
 }
 ```
 
-- **baseUrl** – Base URL of the provider e.g. google, openai, anthropic, etc.
 - **apiKey** – API key for authentication.
+- **baseUrl** – Base URL of the provider e.g. google, openai, anthropic, etc.
 - **model** – Underlying LLM model used for generation.
-
 
 ## Example Workflow
 
 ```bash
 # Create a new project folder
 mkdir my‑project && cd my‑project
-# Initialise OpenSlop
+# Start OpenSlop
 openslop
 # Ask OpenSlop to scaffold a basic Express server
 ```
