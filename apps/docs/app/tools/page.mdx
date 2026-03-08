@@ -1,0 +1,22 @@
+# Tools
+
+OpenSlop equips its AI agent with a powerful set of tools that allow it to interact directly with your filesystem and environment. These tools enable the agent to accomplish complex coding tasks autonomously. 
+
+Here are the primary tools available to the agent:
+
+## read_file
+The `read_file` tool allows the agent to read the contents of any file in your workspace. This is crucial for the agent to understand existing codebase structures, read configuration files, and gain context before making any modifications.
+
+## write_file
+The `write_file` tool enables the agent to create new files or modify existing ones. If the agent needs to write to a directory that does not currently exist, this tool will intelligently **create the necessary parent folders along the way**.
+
+## delete_file
+The `delete_file` tool allows the agent to remove obsolete or unnecessary code. It is capable of safely deleting both individual **files and entire folders**, keeping your workspace clean during refactors.
+
+## run_command
+The `run_command` tool is one of the most powerful features. It allows the agent to execute OS-agnostic terminal commands directly in your workspace. 
+The agent uses this tool for a wide variety of tasks, including:
+- Installing project dependencies (e.g., `npm install`, `pip install`)
+- Running linters or tests
+- Building the project
+- Executing scripts
