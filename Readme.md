@@ -29,7 +29,7 @@ Welcome to **Openslop** – a modern TypeScript monorepo powered by **Turbo** an
 
 - **`apps/tui`** – A command‑line interface for the Openslop AI‑assistant.
 - **`apps/landing`** – A Next.js landing page for the Openslop AI‑assistant.
-- **`apps/docs`** – A Docusaurus documentation site for the Openslop AI‑assistant.
+- **`apps/docs`** – A Nextra documentation site for the Openslop AI‑assistant.
 
 ## 🚀 Getting Started
 
@@ -47,7 +47,7 @@ Welcome to **Openslop** – a modern TypeScript monorepo powered by **Turbo** an
 
 3. **Run TUI, Landing Page, Docs**
 
-   ```bash 
+   ```bash
    bun run dev
    ```
 
