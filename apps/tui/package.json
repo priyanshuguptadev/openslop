@@ -1,6 +1,6 @@
 {
 	"name": "@openslop/openslop",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"license": "MIT",
 	"private": false,
 	"bin": {
@@ -29,6 +29,9 @@
 		"react": "19.2.4"
 	},
 	"devDependencies": {
+		"@repo/agent": "workspace:*",
+		"@repo/config": "workspace:*",
+		"@repo/typescript-config": "workspace:*",
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"@types/marked": "^6.0.0",
 		"@types/marked-terminal": "^6.1.1",
