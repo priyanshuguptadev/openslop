@@ -1,3 +1,5 @@
+import { Tabs } from 'nextra/components'
+
 # Get Started
 
 This guide will help you get started with OpenSlop in no time.
@@ -6,17 +8,42 @@ This guide will help you get started with OpenSlop in no time.
 
 Run the following command in your terminal to install OpenSlop:
 
+<Tabs items={['npm', 'bun', 'pnpm', 'yarn']}>
+  <Tabs.Tab>
 ```bash
 npm i -g @openslop/openslop
 ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```bash
+bun install -g @openslop/openslop
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```bash
+pnpm add -g @openslop/openslop
+```
+  </Tabs.Tab>
+  <Tabs.Tab>
+```bash
+yarn global add @openslop/openslop
+```
+  </Tabs.Tab>
+</Tabs>
 
 ## Quick Start
 
+> [!IMPORTANT]
+> **Start a new terminal session** (or restart your current one) after installation to ensure the globally installed `openslop` command is available in your PATH.
+
 After installation, you can setup the OpenSlop by running the following command:
 You will be prompted to enter the [baseUrl](/glossary#base-url), [apiKey](/glossary#api-key) and [model name](/glossary#model-name).
+
+> [!WARNING]
+> **Use Capable Models:** OpenSlop is an autonomous agent. Using small or weak LLMs will result in poor code quality and the agent may fail to run safely or get stuck in loops. We highly recommend using frontier models (like Claude 3.5 Sonnet, GPT-4o, etc.) for the best experience.
 
 ```bash
 openslop setup
 ```
 
-Next, check out the [Configuration](/config) guide to customize it for your needs.
+Next, check out the [Providers](/providers) and [Configuration](/config) guides to customize it for your needs.
