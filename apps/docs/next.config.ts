@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       "next-mdx-import-source-file": "./mdx-components.ts",
     },
   },
+  experimental: {
+    globalNotFound: true,
+  },
 };
 
 export default withNextra(nextConfig);
