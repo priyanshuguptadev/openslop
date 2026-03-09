@@ -1,0 +1,53 @@
+import { Callout } from 'nextra/components'
+
+# Troubleshooting
+
+If you encounter issues while running or configuring OpenSlop, this page covers the most common problems and their solutions.
+
+---
+
+## The `openslop` Command is Not Found
+
+**Issue**: After installing OpenSlop, running `openslop` in your terminal returns `command not found: openslop`.
+
+**Solution**:
+1. Check if the global installation location of your package manager (npm, bun, pnpm, or yarn) is added to your system's `PATH`.
+2. **Start a new terminal session**. Sometimes the terminal does not register newly installed global binaries until you restart it or open a new window.
+
+---
+
+## Agent is Generating Poor Quality Code
+
+**Issue**: OpenSlop produces buggy code, hallucinates APIs, or deletes important files.
+
+**Solution**:
+The quality of OpenSlop's output is directly tied to the underlying LLM's capabilities. 
+- Ensure your `model` configuration specifies a strong, frontier-tier model (e.g., `claude-3-5-sonnet-20240620`, `gpt-4o`).
+- Avoid using small local models (like a 7B parameter model) for complex workflows as they lack the reasoning capacity for autonomous agentic loops.
+
+---
+
+## Authentication or API Key Errors
+
+**Issue**: You receive a `401 Unauthorized` or `Invalid API Key` error when the agent attempts to run.
+
+**Solution**:
+- Double-check your `apiKey` in your configuration file.
+- Verify that your `baseUrl` matches the provider you are attempting to use. Some providers require `/v1` at the end of the URL (e.g., `https://api.openai.com/v1`).
+- Ensure you have sufficient credits/balance with your AI provider.
+
+---
+
+## Agent Gets Stuck in an Endless Loop
+
+**Issue**: OpenSlop keeps repeating the same command or applying the same failing edit over and over again.
+
+**Solution**:
+1. Abort the process by pressing `Ctrl + C` in your terminal.
+2. Review the context. Sometimes an overly vague prompt or an unsolvable syntax error confuses the agent.
+3. Try clarifying your instructions to be extremely specific, guiding the agent out of the loop.
+4. If using a weaker model, switch to a more capable model.
+
+---
+
+If your issue isn't listed here, feel free to open an issue on the [OpenSlop GitHub Repository](https://github.com/priyanshuguptadev/openslop).

@@ -5,5 +5,6 @@ export default {
     tools: "Tools",
     config: "Config",
     providers: "Providers",
+    troubleshoot: "Troubleshooting",
     glossary: "Glossary"
 }
