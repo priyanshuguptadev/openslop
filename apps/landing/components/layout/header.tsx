@@ -45,7 +45,7 @@ export function Header() {
 
         <div className="flex items-center">
           <Link
-            href="/docs"
+            href={DOCS_URL}
             className={cn(
               "inline-flex h-9 items-center justify-center rounded-full bg-black px-5 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-black/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
             )}
