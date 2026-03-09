@@ -14,7 +14,7 @@ export const metadata = {
 const LANDING_PAGE_URL =
   process.env.NEXT_PUBLIC_LANDING_PAGE_URL || "http://localhost:3000";
 const banner = (
-  <Banner storageKey="some-key">OpenSlop 1.0 is released 🎉</Banner>
+  <Banner storageKey="some-key">OpenSlop 1.2 is released 🎉</Banner>
 );
 const navbar = (
   <Navbar
