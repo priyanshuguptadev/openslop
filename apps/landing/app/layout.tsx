@@ -14,8 +14,11 @@ const instrument = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "openslop",
-  description: "Dont write boilerplates, write what matters",
+  title: "OpenSlop",
+  description: "Coding agent in your terminal",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({

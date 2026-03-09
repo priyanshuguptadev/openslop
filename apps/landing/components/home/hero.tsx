@@ -29,8 +29,8 @@ export function Hero() {
         </h1>
 
         <div className="flex justify-center mt-12 mb-32">
-          <div className="flex items-center gap-4 bg-white border border-gray-200 shadow-sm rounded-full py-2 px-4 pr-2">
-            <code className="text-sm font-mono text-gray-700">
+          <div className="flex items-center gap-4 py-2 px-4 pr-2">
+            <code className="text-sm font-black font-mono text-gray-700">
               npm install -g @openslop/openslop
             </code>
             <button

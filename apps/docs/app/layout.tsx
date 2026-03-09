@@ -7,8 +7,12 @@ import "nextra-theme-docs/style.css";
 export const metadata = {
   title: "OpenSlop Docs",
   description: "OpenSlop Documentation",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
-
+const LANDING_PAGE_URL =
+  process.env.NEXT_PUBLIC_LANDING_PAGE_URL || "http://localhost:3000";
 const banner = (
   <Banner storageKey="some-key">OpenSlop 1.0 is released 🎉</Banner>
 );
@@ -26,7 +30,7 @@ const navbar = (
         />
       </div>
     }
-    logoLink="/"
+    logoLink={LANDING_PAGE_URL}
   />
 );
 const footer = <Footer>MIT {new Date().getFullYear()} © OpenSlop.</Footer>;
@@ -55,7 +59,7 @@ export default async function RootLayout({
           pageMap={await getPageMap()}
           docsRepositoryBase="https://github.com/priyanshuguptadev/openslop/tree/main/apps/docs"
           footer={footer}
-        // ... Your additional layout options
+          // ... Your additional layout options
         >
           {children}
         </Layout>

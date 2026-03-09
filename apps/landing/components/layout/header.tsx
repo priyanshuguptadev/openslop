@@ -2,6 +2,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
+
 export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-transparent bg-background/80 backdrop-blur-sm">
@@ -24,22 +26,20 @@ export function Header() {
 
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
           <Link
-            href="#installation"
-            className="transition-colors hover:text-foreground"
-          >
-            Installation
-          </Link>
-          <Link
-            href="#meet-openslop"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={DOCS_URL}
             className="transition-colors hover:text-foreground"
           >
             Introduction
           </Link>
           <Link
-            href="#privacy"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={`${DOCS_URL}/get-started`}
             className="transition-colors hover:text-foreground"
           >
-            Privacy policy
+            Get Started
           </Link>
         </nav>
 
