@@ -10,10 +10,6 @@ const nextConfig: NextConfig = {
       "next-mdx-import-source-file": "./mdx-components.ts",
     },
   },
-  output: "export",
-  images: {
-    unoptimized: true,
-  },
   experimental: {
     globalNotFound: true,
   },
