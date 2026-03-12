@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
 
 const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
 
@@ -13,13 +12,10 @@ export function Header() {
             href="/"
             className="flex items-center hover:opacity-90 transition-opacity"
           >
-            <Image
+            <img
               src="/logo.png"
               alt="openslop logo"
-              width={160}
-              height={40}
-              className="h-8 w-auto object-contain mix-blend-multiply"
-              priority
+              className="h-8 w-auto object-contain"
             />
           </Link>
         </div>

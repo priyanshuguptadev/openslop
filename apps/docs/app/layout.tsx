@@ -8,7 +8,7 @@ export const metadata = {
   title: "OpenSlop Docs",
   description: "OpenSlop Documentation",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.webp",
   },
 };
 const LANDING_PAGE_URL =

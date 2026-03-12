@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "OpenSlop",
   description: "Coding agent in your terminal",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.webp",
   },
 };
 

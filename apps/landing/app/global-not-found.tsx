@@ -17,7 +17,7 @@ export default function GlobalNotFound() {
         }}
       >
         <img
-          src="/404.png"
+          src="/404.webp"
           alt="404 Not Found"
           style={{
             width: "600px",
