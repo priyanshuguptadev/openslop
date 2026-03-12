@@ -65,7 +65,7 @@ export default function ChatScreen({
 	}
 
 	return (
-		<Box flexDirection="column" alignItems="flex-start">
+		<Box flexDirection="column" alignItems="center" width="100%">
 			<Header missing={missing} />
 			<Messages messages={messages} />
 

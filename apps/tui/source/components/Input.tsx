@@ -17,7 +17,7 @@ export default function InputBox({
 	const isPlaceholder = value.length === 0;
 
 	return (
-		<Box flexDirection="column" marginTop={1}>
+		<Box flexDirection="column" marginTop={1} width="100%">
 			<Box flexDirection="row" gap={1}>
 				<Text color={colors.accent} bold>
 					❯

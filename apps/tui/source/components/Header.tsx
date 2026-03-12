@@ -1,23 +1,24 @@
 import React from 'react';
-import { Box, Text } from 'ink';
+import {Box, Text} from 'ink';
 import figlet from 'figlet';
-import { colors } from '../theme/colors.js';
+import {colors} from '../theme/colors.js';
+import Link from 'ink-link';
 
 const title = figlet.textSync('openslop.', {
 	font: 'ANSI Shadow',
 });
 
-export default function Header({ missing }: { missing: string[] }) {
+export default function Header({missing}: {missing: string[]}) {
 	const allValid = missing.length === 0;
 
 	const REQUIRED = [
-		{ key: 'baseUrl', label: 'Base URL' },
-		{ key: 'apiKey', label: 'API Key' },
-		{ key: 'model', label: 'Model' },
+		{key: 'baseUrl', label: 'Base URL'},
+		{key: 'apiKey', label: 'API Key'},
+		{key: 'model', label: 'Model'},
 	];
 
 	return (
-		<Box flexDirection="column" alignItems="flex-start" marginBottom={1}>
+		<Box flexDirection="column" alignItems="center" marginBottom={1}>
 			<Box marginTop={1}>
 				<Text color={colors.primary}>{title}</Text>
 			</Box>
@@ -43,7 +44,9 @@ export default function Header({ missing }: { missing: string[] }) {
 
 					<Box marginTop={1}>
 						<Text color={colors.error}>
-							Missing variables. Follow docs to configure, or run `openslop setup`.
+							Missing variables. Follow{' '}
+							<Link url="https://docs.openslop.priyanshugupta.space">docs</Link>{' '}
+							to configure.
 						</Text>
 					</Box>
 				</>

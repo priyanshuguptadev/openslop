@@ -90,7 +90,7 @@ export const SetupScreen = () => {
 
 	if (step === 'done') {
 		return (
-			<Box flexDirection="column">
+			<Box flexDirection="column" alignItems="center" width="100%">
 				<Text color={colors.success} bold>
 					Configuration saved successfully.
 				</Text>
@@ -99,7 +99,7 @@ export const SetupScreen = () => {
 	}
 
 	return (
-		<Box flexDirection="column">
+		<Box flexDirection="column" alignItems="center" width="100%">
 			<Header missing={missing} />
 
 			{step !== 'check_reset' && (
